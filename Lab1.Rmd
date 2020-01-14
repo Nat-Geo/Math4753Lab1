@@ -68,6 +68,7 @@ Q.3: Is this the plot of LENGTH vs WEIGHT from the ddt data frame?
 ```{r length v weight}
 ggplot(ddt, aes(x=WEIGHT, y=LENGTH))+geom_point()+ggtitle("LENGTH vs WEIGHT from data frame ddt")
 ```  
+
 Q.4: If v = 1:20 what is the last value of v/20?  
   A.4: 1.00  
   
