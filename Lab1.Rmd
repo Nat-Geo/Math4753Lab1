@@ -2,7 +2,12 @@
 title: "Lab1"
 author: "Nathaniel Gunter"
 date: "1/13/2020"
-output: html_document
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+    theme: darkly
+    highlights: pygments
 ---
 
 ```{r setup, include=FALSE}
