@@ -60,22 +60,25 @@ scmddt = with(ddt, ddt[RIVER=='SCM' & DDT>4.0,])
 head(scmddt)
 ```
 
-CLICKER QUESTIONS:  
-Q.1: What is the mean length of fish in the ddt data frame?  
-  A.1: The mean length of fish in ddt is 45.00 cm.  
-Q.2: What is the standard deviation of the weight of fish in the ddt data frame?  
-  A.2: The standard deviation of weight in ddt is:
+### CLICKER QUESTIONS:  
+  >
+  Q.1: What is the mean length of fish in the ddt data frame?  
+    A.1: The mean length of fish in ddt is 45.00 cm.  
+  Q.2: What is the standard deviation of the weight of fish in the ddt data frame?  
+    A.2: The standard deviation of weight in ddt is:
 ```{r stnd}
 sd(ddt$WEIGHT,na.rm = FALSE)
 ```  
-Q.3: Is this the plot of LENGTH vs WEIGHT from the ddt data frame?  
-  A.3: No, the plot has its axes flipped compared to the example.
+  >
+  Q.3: Is this the plot of LENGTH vs WEIGHT from the ddt data frame?  
+    A.3: No, the plot has its axes flipped compared to the example.
 ```{r length v weight}
 ggplot(ddt, aes(x=WEIGHT, y=LENGTH))+geom_point()+ggtitle("LENGTH vs WEIGHT from data frame ddt")
 ```  
 
-Q.4: If v = 1:20 what is the last value of v/20?  
-  A.4: 1.00  
+  >
+  Q.4: If v = 1:20 what is the last value of v/20?  
+    A.4: 1.00  
   
 ## Task 4 
 
@@ -89,22 +92,28 @@ ddt %>% ggplot(aes(x=RIVER, fill=RIVER))+geom_bar()+ggtitle("Nathaniel Gunter")
 ```  
 
 Make a table of the rivers crossed with the species of fish.  
-
+```{r rxsTable}
+spriv<- with(ddt,table(RIVER,SPECIES))
+spriv
+```
 Make a barplot of the rivers crossed with the species of fish.  
+```{r rxsPlot}
+barplot(spriv,col=2:5)
+```
 
 ## Task 5 
 
 Make a pie chart of Fish SPECIES.  
 ```{r speciesPie}
-speciesPie<- ddt%>%ggplot(aes(x="",y=SPECIES, fill = SPECIES), )+theme(axis.text.y = element_blank())+geom_bar(width=1, stat="identity")+ggtitle("Nathaniel Gunter") + theme(axis.text = element_blank(), axis.ticks=element_blank(), axis.title.x = element_blank(), axis.title.y=element_blank(), axis.line=element_blank())+coord_polar("y",start=0)
-speciesPie
+sp<-with(ddt,table(SPECIES))
+speciesPie<- pie(sp,col=2:4)
 ```  
 
 Make a pie chart of RIVERS.  
 
 ```{r riversPie}
-riversPie <- ddt%>%ggplot(aes(x="",y=RIVER, fill=RIVER), )+geom_bar(width=1, stat="identity")+ggtitle("Nathaniel Gunter")+ theme(axis.text = element_blank(), axis.ticks=element_blank(), axis.title.x = element_blank(), axis.title.y=element_blank(),axis.line=element_blank())+coord_polar("y",start=0)
-riversPie
+riv<-with(ddt,table(RIVER))
+riversPie<- pie(riv,col=1:4)
 ```  
 
 
